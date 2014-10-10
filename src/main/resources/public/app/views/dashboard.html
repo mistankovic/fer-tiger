@@ -1,0 +1,22 @@
+<div class="dashboard view">
+<h3>Dashboard</h3>
+	<div class="row">
+		<div class="large-6 columns">
+			<h5>Collecting unit</h5>
+		</div>
+		<div class="large-6 columns">
+			<h5>Last collected date</h5>
+		</div>
+	</div>
+
+	<div data-ng-repeat="cuSync in lastCollectingUnitsSync">
+		<div class="row">
+			<div class="large-6 columns panel">
+				{{ cuSync.name }}
+			</div>
+			<div class="large-6 columns panel">
+				{{ formatDate(cuSync.lastCollected); }}
+			</div>
+		</div>
+	</div>
+</div>

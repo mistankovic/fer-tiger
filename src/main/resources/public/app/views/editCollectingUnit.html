@@ -1,0 +1,73 @@
+<div class="editCollectingUnit view">
+	<br />
+	<h4>Edit collecting unit</h4>
+	<br />
+	<form data-abide>
+		<div class="row">
+			<label class="large-4 columns">Name: <input type="text"
+				required data-ng-model="collectingUnit.name"
+				placeholder="Collecting unit name i.e. GSN-RASIP" />
+			</label>
+		</div>
+
+		<div class="row">
+			<label class="large-4 columns">URL: <input type="text"
+				data-ng-model="collectingUnit.locationUrl" required
+				pattern="^(http|https)://.+"
+				placeholder="URL of collecting unit i.e. https://128.0.0.1" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Username: <input type="text"
+				data-ng-model="collectingUnit.username"
+				placeholder="Username if needed for collecting data" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Password: <input type="text"
+				data-ng-model="collectingUnit.password"
+				placeholder="Password if needed for collecting data" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Collecting delay: <input
+				type="number" data-ng-model="collectingUnit.collectingDelay"
+				required pattern="[1-9][0-9]*"
+				placeholder="Delay for collecting data in hours" />
+			</label>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				<ul class="large-block-grid-4">
+					<li data-ng-repeat="sensor in allSensors"><label>
+							<table>
+								<thead>
+									<tr>
+										<th><input type="checkbox"
+											data-ng-checked="sensor.checked"
+											data-ng-model="sensor.checked" /></th>
+										<th>{{sensor.name}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="field in sensor.fields">
+										<td>{{field.type}}</td>
+										<td>{{field.name}}</td>
+									</tr>
+								</tbody>
+							</table>
+					</label></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns left">
+				<a class="button round" href="#/collecting-units">Cancel</a>
+			</div>
+			<div class="large-2 columns left">
+				<button class="button round" data-ng-click="update()">Save</button>
+			</div>
+		</div>
+	</form>
+
+</div>

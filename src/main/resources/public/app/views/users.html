@@ -1,0 +1,26 @@
+<div class="users view">
+	<h3>Users</h3>
+	<a class="button round" href="#/add-user">Add</a>
+	<div class="row">
+		<div class="large-5 columns">
+			<h5>Name</h5>
+		</div>
+		<div class="large-4 columns">
+			<h5>Email</h5>
+		</div>
+		<div class="large-3 columns">
+			<h5>Date created</h5>
+		</div>
+	</div>
+
+	<div data-ng-repeat="user in users">
+		<div class="row panel">
+			<div class="large-5 columns">{{ user.firstName + ' ' +	user.lastName }}</div>
+			<div class="large-4 columns">{{ user.email }}</div>
+			<div class="large-3 columns">{{ formatDate(user.dateCreated); }}</div>
+			<hr />
+			<a class="button round small" href="#/edit-user/{{user.id}}">Edit</a>
+			<button class="button round small" data-ng-click="delete(user)">Delete</button>
+		</div>
+	</div>
+</div>

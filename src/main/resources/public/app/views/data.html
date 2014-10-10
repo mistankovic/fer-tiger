@@ -1,0 +1,64 @@
+<div class="data view">
+	<h3>Data</h3>
+	<br />
+	<div class="row large-9 columns" data-ng-repeat="scu in selectedCollectingUnits">
+		<label class="large-3 columns"> <select
+			data-ng-options="cu as cu.name for cu in collectingUnits"
+			data-ng-model="selectedCollectingUnits[$index].cu"
+			data-ng-change="collectingUnitChangedInCollection($index)"></select>
+		</label> <label class="large-3 columns"> <select
+			data-ng-show="selectedCollectingUnits[$index] != null && sensors[$index] != null"
+			data-ng-options="sensor as sensor.name for sensor in sensors[$index]"
+			data-ng-model="selectedSensors[$index]"></select>
+		</label> <label class="large-3 columns"> <select
+			data-ng-show="sensors[$index] != null && selectedSensors[$index] != null"
+			data-ng-options="field as field.name for field in selectedSensors[$index].fields"
+			data-ng-model="selectedFields[$index]"></select>
+		</label>
+		<div class="large-3 columns"></div>
+	</div>
+	<div class="row large-12 columns">
+		<label class="large-3 columns"> <select
+			data-ng-options="cu as cu.name for cu in collectingUnits"
+			data-ng-model="selectedCollectingUnit"
+			data-ng-change="collectingUnitChanged()"></select>
+		</label> <label class="large-3 columns"> <select
+			data-ng-show="selectedCollectingUnit != null && selectedCuSensors != null"
+			data-ng-options="sensor as sensor.name for sensor in selectedCuSensors"
+			data-ng-model="selectedSensor"></select>
+		</label> <label class="large-3 columns"> <select
+			data-ng-show="selectedCuSensors != null && selectedSensor != null"
+			data-ng-options="field as field.name for field in selectedSensor.fields"
+			data-ng-model="fieldSelected"></select>
+		</label>
+		<label class="large-3 columns">
+		<button data-ng-show="fieldSelected != null"
+			class="button round small" data-ng-click="addFieldChooser()">Add another field</button>
+		</label>
+	</div>
+
+	<div class="row large-12 columns">
+		<div class="large-3 columns">
+			<label>From:</label>
+			<quick-datepicker date-format="yyyy-MM-dd" placeholder="Start date" data-ng-model="dateFrom"></quick-datepicker>
+		</div>
+		<div class="large-3 columns">
+			<label>To:</label>
+			<quick-datepicker date-format="yyyy-MM-dd" placeholder="End date" data-ng-model="dateTo"></quick-datepicker>
+		</div>
+		<div class="large-3 columns">
+			<button class="button round" data-ng-click="drawGraph()">Graph</button>
+		</div>
+		<div class="large-3 columns">
+			<button class="button round" data-ng-click="createCSV()">CSV</button>
+		</div>
+	</div>
+	<hr />
+	<div data-ng-show="showGraph">
+		<nvd3-line-chart data="graphData" showXAxis="true" showYAxis="true"
+			xAxisTickFormat="xAxisTickFormatFunction()"
+			yAxisTickFormat="yAxisTickFormatFunction()" height="500"
+			showLegend="true" useInteractiveGuideLine="true" tooltips="true"
+			interactive="true"> <svg></svg> </nvd3-line-chart>
+	</div>
+</div> 

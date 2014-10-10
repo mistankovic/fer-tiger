@@ -1,0 +1,88 @@
+<div class="addCollectingUnit view">
+<h4>Add collecting unit</h4>
+	<br />
+	<form data-abide>
+			<div class="row">
+				<label class="large-5 columns">Name: <input type="text" required 
+					data-ng-model="collectingUnit.name"
+					placeholder="Collecting unit name i.e. GSN-RASIP" />
+				</label>
+			</div>
+
+			<div class="row">
+				<label class="large-5 columns">URL: <input type="text"
+					data-ng-model="collectingUnit.locationUrl" data-ng-readonly="sensorsRetrieved" required pattern="^(http|https)://.+"
+					placeholder="URL of collecting unit i.e. https://128.0.0.1" />
+				</label>
+			</div>
+			<div class="row">
+				<label class="large-5 columns">Username: <input type="text"
+					data-ng-model="collectingUnit.username" data-ng-readonly="sensorsRetrieved"
+					placeholder="Username if needed for collecting data" />
+				</label>
+			</div>
+			<div class="row">
+				<label class="large-5 columns">Password: <input type="text"
+					data-ng-model="collectingUnit.password" data-ng-readonly="sensorsRetrieved"
+					placeholder="Password if needed for collecting data" />
+				</label>
+			</div>
+			<div class="row">
+				<div class="large-5 columns">
+					<label>Collect since:&nbsp;&nbsp;<quick-datepicker placeholder="Date time to start collecting from" 
+					date-format="yyyy-MM-dd" data-ng-model="collectingUnit.collectStartDate"></quick-datepicker> 
+					</label>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<label class="large-5 columns">Collecting delay: <input	type="number" 
+				data-ng-model="collectingUnit.collectingDelay" required pattern="[1-9][0-9]*"
+					placeholder="Delay for collecting data in hours" />
+				</label>
+			</div>
+			<div class="row">
+				<label  class="large-5 columns">Type:
+ 					<select data-ng-readonly="sensorsRetrieved" required
+				data-ng-options="type for type in collectingUnitTypes"
+				data-ng-model="collectingUnit.type"></select>
+			</label>
+			</div>
+			<div class="row" data-ng-show="sensorsRetrieved">
+				<div class="large-12 columns">
+					<ul class="large-block-grid-4">
+					<li data-ng-repeat="sensor in cuSensors"><label>
+							<table>
+							<thead>
+								<tr>
+									<th><input type="checkbox"
+										data-ng-checked="sensor.checked"
+										data-ng-init="sensor.checked=true"
+										data-ng-model="sensor.checked" /></th>
+									<th>{{sensor.name}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="field in sensor.fields">
+									<td>{{field.type}}</td><td>{{field.name}}</td>
+								</tr>
+							</tbody>
+							</table>
+					</label></li>
+				</ul>
+				</div>
+			</div>
+		<div class="row">
+			<div class="large-2 columns left">
+				<a class="button round" href="#/collecting-units">Cancel</a> 
+			</div>
+			<div class="large-2 columns left" data-ng-hide="sensorsRetrieved">
+				<button class="button round" data-ng-click="fetchSensors()">Proceed</button>
+			</div>
+			<div class="large-2 columns left" data-ng-show="sensorsRetrieved">
+				<button class="button round" data-ng-click="save()">Save</button>
+			</div>
+		</div>
+	</form>
+
+</div>

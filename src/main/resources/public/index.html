@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RASIP Tiger | Welcome</title>
+<link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+<link rel="stylesheet" type="text/css" href="bower_components/ngQuickDate/dist/ng-quick-date-plus-default-theme.css" media="all" />
+<link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
+<script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+</head>
+<body data-ng-app="tigerWebApp">
+
+	<nav class="top-bar">
+		<ul class="title-area">
+			<li class="name"><h1>
+					<a href="#">RASIP Tiger</a>
+				</h1></li>
+		</ul>
+		
+		<section class="top-bar-section">
+			<ul class="right">
+				<li><a href="#/dashboard">Dashboard</a></li>
+				<li><a href="#/collecting-units">Collecting units</a></li>
+				<li><a href="#/data">Data</a></li>
+				<li><a href="#/users">Users</a></li>
+				<li><a href="logout">Logout</a></li>
+			</ul>
+		</section>
+	</nav>
+	
+	<div id="angularViewContainer" class="angularViewContainer" data-ng-view></div>
+
+	<!-- Foundation dependancies -->
+	<script src="bower_components/foundation/js/vendor/jquery.js"></script>
+	<script src="bower_components/foundation/js/foundation.min.js"></script>
+
+	<!-- AngularJS dependancies -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/ngQuickDate/dist/ng-quick-date.min.js"></script>
+	<script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js"></script>
+	    
+    <!--NVD 3 dependancies  -->
+	<script src="bower_components/d3/d3.min.js"></script>
+	<script src="bower_components/nvd3/nv.d3.min.js"></script>    
+
+	<!-- Application sources -->
+	<script src="app/app.js"></script>
+	<script src="app/controllers/dashboardController.js"></script>
+	<script src="app/controllers/collectingUnitsController.js"></script>
+	<script src="app/controllers/addCollectingUnitController.js"></script>
+	<script src="app/controllers/archivedCollectingUnitsController.js"></script>
+	<script src="app/controllers/dataController.js"></script>
+	<script src="app/controllers/editCollectingUnitController.js"></script>
+	<script src="app/controllers/usersController.js"></script>
+	<script src="app/controllers/addUserController.js"></script>
+	<script src="app/controllers/editUserController.js"></script>
+	<script src="app/services/collectingUnitService.js"></script>
+	<script src="app/services/measurementsService.js"></script>
+	<script src='app/services/sensorService.js'></script>
+	<script src='app/services/measurementsService.js'></script>
+	<script src="app/services/userService.js"></script>
+	<script src="app/services/utilsService.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>

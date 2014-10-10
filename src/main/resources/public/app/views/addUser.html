@@ -1,0 +1,63 @@
+<div class="addUser view">
+	<br />
+	<h4>Add user</h4>
+	<br />
+	<form data-abide>
+		<div class="row">
+			<label class="large-4 columns">Email: <input type="email"
+				data-ng-model="user.email" required
+				placeholder="User email for login" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">First name: <input type="text"
+				data-ng-model="user.firstName" required 
+				placeholder="User first name" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Last name: <input type="text"
+				data-ng-model="user.lastName" required
+				placeholder="User last name" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Password: <input type="password"
+				data-ng-model="user.password" required
+				placeholder="User password for login" />
+			</label>
+		</div>
+		<div class="row">
+			<label class="large-4 columns">Confirm password: <input type="password"
+				data-ng-model="passwordConfirmation" required
+				placeholder="User password repeated" />
+			</label>
+		</div>
+		<div class="row">
+			<ul class="large-block-grid-4">
+				<li data-ng-repeat="role in allRoles"><label>
+						<table>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" data-ng-checked="role.checked"
+										data-ng-model="role.checked" /></td>
+									<td>{{ role.name }}</td>
+								</tr>
+								<tr>
+									<td colspan="2">{{ role.description }}</td>
+								</tr>
+							</tbody>
+						</table>
+				</label></li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="large-2 columns left">
+				<a class="button round" href="#/users">Cancel</a>
+			</div>
+			<div class="large-2 columns left">
+				<button class="button round" data-ng-click="save()">Save</button>
+			</div>
+		</div>
+	</form>
+</div>

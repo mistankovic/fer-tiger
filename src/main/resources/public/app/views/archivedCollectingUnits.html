@@ -1,0 +1,31 @@
+<div class="collectingUnits archived view">
+	<h3>Archive</h3>
+	<div class="row">
+		<div class="large-3 columns">
+			<h5>Name</h5>
+		</div>
+		<div class="large-3 columns">
+			<h5>URL</h5>
+		</div>
+		<div class="large-3 columns">
+			<h5>Last collected date</h5>
+		</div>
+		<div class="large-3 columns">
+			<h5>Date archived</h5>
+		</div>
+	</div>
+
+	<div data-ng-repeat="cu in collectingUnits">
+		<div class="row panel">
+			<div class="large-3 columns">{{ cu.name }}</div>
+			<div class="large-3 columns">{{ cu.locationUrl }}</div>
+			<div class="large-3 columns">{{ formatDate(cu.lastCollected); }}</div>
+			<div class="large-3 columns">{{ formatDate(cu.dateArchived); }}</div>
+			<hr />
+			<a class="button round small" href="#/collecting-unit/cu.id">Edit</a>
+			<button class="button round small" data-ng-click="unarchive(cu)">Unarchive</button>
+			<button class="button round small" data-ng-click="delete(cu)">Delete</button>
+		</div>
+		<hr />
+	</div>
+</div>
