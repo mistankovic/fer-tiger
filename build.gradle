@@ -1,0 +1,53 @@
+buildscript {
+	ext {
+		springBootVersion = '1.0.2.RELEASE'
+		commonsCodecVersion = '1.9'
+		psqlDriverVersion = '9.0-801.jdbc4'
+	}
+    repositories {
+    	mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+def appName = 'tiger'
+def appVersion = '1.0.0'
+
+jar {
+    baseName = appName
+	version = appVersion
+}
+
+war {
+	baseName = appName
+	version = appVersion
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-rest:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("commons-codec:commons-codec:${commonsCodecVersion}")
+	compile("postgresql:postgresql:${psqlDriverVersion}")
+	
+	runtime 'com.fasterxml.jackson.core:jackson-core'
+	runtime 'com.fasterxml.jackson.core:jackson-databind'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
